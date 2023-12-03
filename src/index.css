@@ -1,63 +1,67 @@
 * {
-  padding:0;
-  margin: 0;
-  box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
 
-  --mobile-margin: 0.75rem;
-  --desktop-tablet-margin: 0.5rem;
+	--mobile-margin: 0.75rem;
+	--desktop-tablet-margin: 0.5rem;
 
-  --span-columns: 1/-1;
+	--span-columns: 1/-1;
 
-  --span-half-mobile: auto/span 2;
-  --span-half-tablet: auto/span 8;
-  --span-half-desktop: auto/span 12;
-
+	--span-half-mobile: auto/span 2;
+	--span-half-tablet: auto/span 8;
+	--span-half-desktop: auto/span 12;
 }
 
-body,#root { display: grid; }
-
-@media(max-width: 600px){
-  body, #root {
-    grid-template-columns: repeat(4, 1fr);
-    margin: var(--mobile-margin);
-  }
-
-  .full-span {
-    grid-column: var(--span-columns);
-  }
-
-  .half-span {
-    grid-column: var(--span-half-mobile);
-  }
+body,
+#root {
+	display: grid;
 }
 
-@media(min-width: 600px){
-  body, #root {
-    grid-template-columns: repeat(8, 1fr);
-    margin: var(--desktop-tablet-margin);
-  }
+@media (max-width: 600px) {
+	body,
+	#root {
+		grid-template-columns: repeat(4, 1fr);
+		margin: var(--mobile-margin);
+	}
 
-  .full-span {
-    grid-column: var(--span-columns);
-  }
+	.full-span {
+		grid-column: var(--span-columns);
+	}
 
-  .half-span {
-    grid-column: var(--span-half-tablet);
-  }
+	.half-span {
+		grid-column: var(--span-half-mobile);
+	}
 }
 
-@media(min-width: 900px){
-  body, #root {
-    grid-template-columns: repeat(12, 1fr);
-    margin: var(--desktop-tablet-margin);
-  }
+@media (min-width: 600px) {
+	body,
+	#root {
+		grid-template-columns: repeat(8, 1fr);
+		margin: var(--desktop-tablet-margin);
+	}
 
-  .full-span {
-    grid-column: var(--span-columns);
-  }
+	.full-span {
+		grid-column: var(--span-columns);
+	}
 
-  .half-span {
-    grid-column: var(--span-half-desktop);
-  }
+	.half-span {
+		grid-column: var(--span-half-tablet);
+	}
 }
 
+@media (min-width: 900px) {
+	body,
+	#root {
+		grid-template-columns: repeat(12, 1fr);
+		margin: var(--desktop-tablet-margin);
+	}
+
+	.full-span {
+		grid-column: var(--span-columns);
+	}
+
+	.half-span {
+		grid-column: var(--span-half-desktop);
+	}
+}
