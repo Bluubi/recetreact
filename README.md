@@ -1,10 +1,18 @@
 # Docs
 
-[Styles](#1-styles)
+<h4>
+
+[1. Styles](#1-styles)
+
+[2. Configuration](#2-configuration)
+
+[3. Things learned]
+
+[4. Problems I found](#3-problems-i-found)
+
+</h4>
 
 # 1. Styles
-# 2. Configuration
-
 
 ### Media queries
 
@@ -47,25 +55,30 @@
 
 ```
 
+# 3. THINGS I LEARNED
 
-# 3. PROBLEMS I FOUND
+### How to have more than one style:
+
+``<h1 role={'presentation'} className={`full-span ${styles.h1}`}> Hello World! </h1>``
+
+# 4. PROBLEMS I FOUND
 
 - `expect is not defined`
 
 This happens when using vitest because jest use **globals** to define its expect. So we need to follow
-this step: https://github.com/vitest-dev/vitest/issues/1504#issuecomment-1159668988. 
+this step: https://github.com/vitest-dev/vitest/issues/1504#issuecomment-1159668988.
 
 Create a `setup.ts` file and add the following:
 
-````
+```
 import matchers = require('@testing-library/jest-dom/matchers')
 import { expect } from 'vitest'
 
 expect.extend(matchers)
 
-````
+```
 
-Also add to our ``vitest.config.ts`` (if you dont have it, create it)
+Also add to our `vitest.config.ts` (if you dont have it, create it)
 this configuration:
 
 ```
@@ -85,18 +98,17 @@ This happens because the test is running in the **DOM** `environment`, not in th
 to know this environment.
 
 First of all install jsdom:
-```npm install jsdom```
+`npm install jsdom`
 
-and then put this on *each* testing file you have:
+and then put this on _each_ testing file you have:
 
-````
+```
 /**
  * @vitest-environment jsdom
  */
-````
+```
 
 Should look like this:
-
 
 ```
 import {render, screen} from "@testing-library/react";
@@ -119,4 +131,3 @@ describe('App', () =>{
 This solves the error.
 
 > Docs: https://dev.to/mbarzeev/from-jest-to-vitest-migration-and-benchmark-23pl
-
