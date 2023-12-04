@@ -11,6 +11,20 @@
 	--span-half-mobile: auto/span 2;
 	--span-half-tablet: auto/span 8;
 	--span-half-desktop: auto/span 12;
+
+	/* PALETTE COLORS */
+
+	--bg-pastel-dark-green: #a3d6ac;
+	--bg-pastel-light-green: #a3d6ac;
+	--bg-pastel-yellow: #fffbc4;
+
+	/* SPACING **/
+	--pad-8: 0.5rem;
+	--pad-16: 1rem;
+	--pad-24: 1.5rem;
+	--pad-32: 2rem;
+
+	font-family: 'Noto Sans Batak', arial, 'Times New Roman', serif;
 }
 
 body,
@@ -18,11 +32,11 @@ body,
 	display: grid;
 }
 
+/* queries */
 @media (max-width: 600px) {
 	body,
 	#root {
 		grid-template-columns: repeat(4, 1fr);
-		margin: var(--mobile-margin);
 	}
 
 	.full-span {
@@ -38,7 +52,6 @@ body,
 	body,
 	#root {
 		grid-template-columns: repeat(8, 1fr);
-		margin: var(--desktop-tablet-margin);
 	}
 
 	.full-span {
@@ -54,7 +67,6 @@ body,
 	body,
 	#root {
 		grid-template-columns: repeat(12, 1fr);
-		margin: var(--desktop-tablet-margin);
 	}
 
 	.full-span {
@@ -64,4 +76,41 @@ body,
 	.half-span {
 		grid-column: var(--span-half-desktop);
 	}
+}
+
+
+.pad-8 {
+	padding: var(--pad-8)
+}
+
+.pad-16 {
+	padding: var(--pad-16)
+}
+
+.pad-24 {
+	padding: var(--pad-24)
+}
+
+.pad-32 {
+	padding: var(--pad-32)
+}
+
+.bg-dark {
+	background-color: var(--bg-pastel-dark-green);
+}
+
+.bg-light {
+	background-color: var(--bg-pastel-light-green);
+}
+
+.bg-white {
+	background-color: white;
+}
+
+.bg-black {
+	background-color: black;
+}
+
+.bg-highlight {
+	background-color: var(--bg-pastel-yellow);
 }
