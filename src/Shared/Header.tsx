@@ -7,8 +7,13 @@ type HeaderProps = ComponentProps<'header'> & {
 }
 
 const Header = ({ backgroundColor, padding, ...props }: HeaderProps) => {
-	return <header role={'title'} className={`full-span ${styles.header} ${backgroundColor} ${padding}`}>
-		{props.children}</header>
+	return (
+		<header
+			role={'title'}
+			className={`full-span ${styles.header} ${backgroundColor} ${padding}`}>
+			{props.children}
+		</header>
+	)
 }
 
 export default Header
