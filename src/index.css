@@ -14,9 +14,10 @@
 
     /* PALETTE COLORS */
 
-    --bg-pastel-dark-green: #a3d6ac;
-    --bg-pastel-light-green: #a3d6ac;
-    --bg-pastel-yellow: #fffbc4;
+    --bg-pastel-dark: #092635;
+    --bg-pastel-secondary-dark: #1B4242;
+    --bg-pastel-medium-dark: #5C8374;
+    --bg-pastel-light: #9EC8B9;
 
     /* SPACING **/
     --pad-8: 0.5rem;
@@ -95,11 +96,11 @@ body, .grid {
 }
 
 .bg-dark {
-    background-color: var(--bg-pastel-dark-green);
+    background-color: var(--bg-pastel-dark);
 }
 
 .bg-light {
-    background-color: var(--bg-pastel-light-green);
+    background-color: var(-green);
 }
 
 .bg-white {

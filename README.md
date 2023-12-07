@@ -33,7 +33,7 @@
 
 # 2. Configuration
 
-### Prettier
+### a) Prettier
 
 > https://prettier.io/docs/en/install.html
 
@@ -54,6 +54,12 @@
 }
 
 ```
+
+### b) React Router Dom
+
+- *`<ReactRouter>`* is NOT the same as `<RouterProvider>`. The first one doesn't let you use `createBrowserRouter` to
+  create your paths. For that you should use
+  ``ProviderRouter`` instead.
 
 # 3. THINGS I LEARNED
 
