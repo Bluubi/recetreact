@@ -1,5 +1,12 @@
 .presentation {
-	padding: 1rem;
-	color: white;
-	border: 4px double white;
+    padding: 1rem;
+    color: white;
+    border: 4px double white;
+}
+
+.session {
+    position: absolute;
+    right: 0;
+    bottom: 10px;
+    margin-right: 32px;
 }

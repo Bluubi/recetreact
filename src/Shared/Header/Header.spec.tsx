@@ -1,6 +1,6 @@
 import { describe } from 'vitest'
 import { render } from '@testing-library/react'
-import Header from './Header.tsx'
+import HeaderTemplate from './Header.template.tsx'
 
 /**
  * @vitest-environment jsdom
@@ -19,7 +19,7 @@ describe('Header', () => {
 			expectedBackground,
 		}) => {
 			const renderized = render(
-				<Header
+				<HeaderTemplate
 					backgroundColor={valueBackground}
 					padding={valuePadding}
 				/>
@@ -33,11 +33,11 @@ describe('Header', () => {
 
 	it('header should render content projection', () => {
 		const header = render(
-			<Header
+			<HeaderTemplate
 				backgroundColor={'bg-dark'}
 				padding={'pad-8'}>
 				<div role={'contentinfo'}></div>
-			</Header>
+			</HeaderTemplate>
 		)
 
 		expect(header.getByRole('contentinfo')).toBeTruthy()

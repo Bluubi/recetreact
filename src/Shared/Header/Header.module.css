@@ -1,0 +1,4 @@
+.header {
+    padding: var(--pad-16);
+    position: relative;
+}

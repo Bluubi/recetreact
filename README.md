@@ -113,15 +113,15 @@ Should look like this:
 ```
 import {render, screen} from "@testing-library/react";
 import '@testing-library/jest-dom'
-import App from "./App.tsx";
+import AppTemplate from "./App.template.tsx";
 import {describe, expect, it} from "vitest";
 
 /**
  * @vitest-environment jsdom
  */
-describe('App', () =>{
+describe('AppTemplate', () =>{
     it('should render Hello World', () => {
-        render(<App  />);
+        render(<AppTemplate  />);
 
         expect(screen.getByRole('presentation')).toBeInTheDocument();
     })

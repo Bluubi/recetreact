@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import App from './App.tsx'
+import AppTemplate from './App.template.tsx'
 import { describe, expect, it } from 'vitest'
 
 /**
@@ -8,7 +8,7 @@ import { describe, expect, it } from 'vitest'
  */
 describe('App', () => {
 	it('should render Hello World', () => {
-		render(<App />)
+		render(<AppTemplate />)
 
 		expect(screen.getByRole('presentation')).toBeInTheDocument()
 	})

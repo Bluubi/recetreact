@@ -6,7 +6,11 @@ type HeaderProps = ComponentProps<'header'> & {
 	padding: 'pad-8' | 'pad-16'
 }
 
-const Header = ({ backgroundColor, padding, ...props }: HeaderProps) => {
+const HeaderTemplate = ({
+	backgroundColor,
+	padding,
+	...props
+}: HeaderProps) => {
 	return (
 		<header
 			role={'title'}
@@ -16,4 +20,4 @@ const Header = ({ backgroundColor, padding, ...props }: HeaderProps) => {
 	)
 }
 
-export default Header
+export default HeaderTemplate
