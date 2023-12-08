@@ -6,9 +6,9 @@
 
 [2. Configuration](#2-configuration)
 
-[3. Things learned]
+[3. Things learned](#3-things-learned)
 
-[4. Problems I found](#3-problems-i-found)
+[4. Problems I found](#4-problems-i-found)
 
 </h4>
 
@@ -63,7 +63,7 @@ This will have some rules. (WIP)
 
 > https://www.npmjs.com/package/husky
 
-# 3. THINGS I LEARNED
+# 3. THINGS LEARNED
 
 ### How to have more than one style:
 
