@@ -1,19 +1,22 @@
 import styles from './logo.module.css'
 import logout from '@assets/svgs/person-delete-fill.svg'
+import { Link } from 'react-router-dom'
 
-const LogoSession = () => {
+function LogoSessionTemplate() {
 	return (
 		<div className={styles.container}>
-			<a
+			<Link
+				role={'link'}
 				className={styles.link}
-				href={'/login'}>
+				to={'/login'}>
 				<img
 					className={styles.logo}
 					alt={'no logged'}
 					src={logout}
 				/>
-			</a>
+			</Link>
 		</div>
 	)
 }
-export default LogoSession
+
+export default LogoSessionTemplate

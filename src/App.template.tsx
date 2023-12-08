@@ -1,8 +1,8 @@
 import styles from './App.module.css'
 import HeaderTemplate from './Shared/Header/Header.template.tsx'
 import SectionTemplate from './Shared/Section/Section.template.tsx'
-import LogoSession from './Core/feature/session/ui/LogoSession.template.tsx'
 import { Outlet } from 'react-router-dom'
+import LogoSessionTemplate from './Core/feature/session/logoSession/ui/LogoSession.template.tsx'
 
 function AppTemplate() {
 	return (
@@ -16,7 +16,7 @@ function AppTemplate() {
 					{' '}
 					Welcome to RecetReact{' '}
 				</h3>
-				<LogoSession />
+				<LogoSessionTemplate />
 			</HeaderTemplate>
 
 			<SectionTemplate role={'contentinfo'} />

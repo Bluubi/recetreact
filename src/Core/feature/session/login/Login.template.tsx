@@ -1,6 +1,7 @@
 import styles from './login.module.css'
+import { JSX } from 'react'
 
-const LoginTemplate = () => {
+const LoginTemplate = (): JSX.Element => {
 	return (
 		<div className={styles.background}>
 			<div role={'generic'}>
