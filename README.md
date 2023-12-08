@@ -292,3 +292,22 @@ describe('AppTemplate', () =>{
 This solves the error.
 
 > Docs: https://dev.to/mbarzeev/from-jest-to-vitest-migration-and-benchmark-23pl
+
+- `TypeError: Cannot destructure property 'basename' of 'React__namespace.useContext(...)' as it is null.`
+
+It seems this happens when you are doing tests and you have used `<Link>` at any moment y your application. The solution
+is to wrap your element in the test between ``<BrowserRouter>``:
+
+````
+it('should render Hello World', () => {
+		render(
+			<BrowserRouter>
+				<AppTemplate />
+			</BrowserRouter>
+		)
+
+		expect(screen.getByRole('presentation')).toBeInTheDocument()
+	})
+````
+
+The error will be solved.
