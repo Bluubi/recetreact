@@ -1,0 +1,15 @@
+.link {
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: var(--pad-8);
+
+}
+
+.dark {
+    background: var(--bg-pastel-dark);
+}
+
+.text-light {
+    color: white;
+}

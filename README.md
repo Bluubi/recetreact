@@ -6,9 +6,11 @@
 
 [2. Configuration](#2-configuration)
 
-[3. Things learned](#3-things-learned)
+[3. Application Design](#3-application-design)
 
-[4. Problems I found](#4-problems-i-found)
+[4. Things I learned](#4-things-i-learned)
+
+[5. Problems I found](#5-problems-i-found)
 
 </h4>
 
@@ -63,8 +65,6 @@ This will have some rules. (WIP)
 
 > https://www.npmjs.com/package/husky
 
-# 3. THINGS LEARNED
-
 ### How to have more than one style:
 
 ``<h1 role={'presentation'} className={`full-span ${styles.h1}`}> Hello World! </h1>``
@@ -76,6 +76,8 @@ This will have some rules. (WIP)
   `ProviderRouter` instead.
 
 ### Testing react router
+
+<div id="test-react-router"></div>
 
 It's **so different** from Angular. I was used to Angular's way to testing router using `RouterTestingHarness` that
 was as easy as
@@ -116,8 +118,8 @@ default: () => LoginTemplate,
 
 ```
 
-This is because **we are not using our router system**; that is, we dont _really have our ´´routes`` associated with de
-router`_
+This is because **we are not using our router system**; that is, we dont _really have our ´´routes`` associated
+with `router`
 Think in this like a **specific context**. Nothing **directly related** with this context **can be known**, and our
 Router does not beloing _directly_
 to this space of test. So first, we **mock** the direction to associated with the element we desire to be renderer when
@@ -222,7 +224,145 @@ Then we wait until the action is complete. After that, we can check if the actua
 
 This is a simple test, but a good first step to start our knowledge on this tests.
 
-# 4. PROBLEMS I FOUND
+# 3. APPLICATION DESIGN
+
+In this topic we'll talk about the **rules** and **design** applied to the application.
+
+### Template Method
+
+The structure of a ``template method`` is like this:
+
+![TemplateMethod](./src/assets/docs/template-method.png)
+
+But we need to face some **problems** and take a different approach:
+
+- First of all, this pattern is **based on classes**, and we are working with **function**. We cannot create abstract
+  classes and nothing related with them. So, to face this we will create a **basic button template** which we'll act
+  like de **superclass**.
+
+Example:
+
+````
+function Button({ ...props }: ButtonProps) {
+	return {
+		render: () => {
+			return (
+				<button
+					className={styles.link}
+					role={'button'}
+					data-testid={props.testId}
+					onClick={props.callback}>
+					{' '}
+					{props.children}
+				</button>
+			)
+		},
+	}
+}
+````
+
+Button is the **main renderer React.NodeObject** which will accept the children from the one who will use **Button**.
+For example:
+
+`````
+export const ButtonLoginTemplate = {
+	action: {
+		render: (children: JSX.Element) =>
+			Button({ callback: sayHi, testId: 'submit', children }).render(),
+	},
+}
+
+function sayHi() {
+	console.log('hi')
+}
+`````
+
+**ButtonLoginTemplate** is an object who had a property call **action**. This **action** will "extend" the render from
+de parent.
+
+> Note: obviously is nos extended because **there is no parent class neither child class**, but this will a **rule** for
+> our purposes.
+
+``render`` will use the ``Button`` parent as "basic template" and it will send to him a callback, because ``onClick``
+event from the parent will trigger the child's ``function``.
+
+Also the parent _holds all the basic styles_ for a button (in our application) and there is another properties
+like ``theme``,
+``padding`` or ``margin`` who can be overwritten.
+
+So it exists a relationship like this:
+
+![MyTemplateMethod](./src/assets/docs/my-template-method.png)
+
+# 4. THINGS I LEARNED
+
+- a) <u>[How to test with React Router](#test-react-router)</u>
+
+- b) <u>INVERSION OF CONTROL (IoC)</u>
+
+In early days of computer software, you directly control the **flow of the program**. Now this is controlled by *
+*frameworks**
+
+> Martin Fowler said:
+>
+> “Inversion of control is a common characteristic of frameworks,
+> so saying that these lightweight containers (spring and pico container, etc.)
+> are special because they use inversion of control is like saying my car is special because it has wheels.”
+
+What means _inversion of control_ is common in frameworks? It means that sometimes you need to do some task (por
+example, creating a component) and the _way_ to create
+it es **determined** by the **framework**. That means _it has the flow of control_, because is expecting from you
+_some specific code_
+
+This not only undermine the fact that is pretty common, but it also put it as _normal thing_. Nowadays mostly we relied
+on **dependency
+injection** to work with Inversion of Control, but we will take another approach here.
+
+> > Inversion of Control is a key part of what makes a framework different from a library. A library is essentially a
+> > set of functions that you can call, these days usually organized into classes. Each call does some work and returns
+> > control to the client whereas a framework does some work for you, you just need to plug your behavior into some
+> > places
+> > by either by subclassing or by plugging into your own classes. Then framework will call your code when it is
+> > required.
+
+* Note: Dependency Inversion Principle is **NOT** the same as Invertion of Control.
+
+### Techniques
+
+Some techniques to apply **Inversion of control**:
+
+1. Using a service locator pattern
+2. Using dependency injection pattern
+3. Using a contextualized lookup
+4. Using template method design pattern
+5. Using strategy design pattern
+
+The most commonly used patterns are 1 and 2. You can understand the differences between them in this
+link https://medium.com/@amitkma/understanding-inversion-of-control-ioc-principle-163b1dc97454#:~:text=Let%E2%80%99s%20take%20an%20example.
+
+> Docs: https://medium.com/@amitkma/understanding-inversion-of-control-ioc-principle-163b1dc97454
+
+
+We will attack **Template method design pattern** (just because im curious about it).
+
+### Template method design pattern
+
+First of all: What is this method?
+
+As the documentation explains: _its a skeleton created by two types of algorithms; the ones which are invariables (it
+means no one can override the function), and the second ones which are variable (so, it can be override)_
+
+Let's work with an example:
+
+I have a button on the login page:
+
+![Button](./src/assets/docs/Button-with-friends.png)
+
+- **render** This function will be the one in charge of return de JSX.Element
+
+> https://sourcemaking.com/design_patterns/template_method
+
+# 5. PROBLEMS I FOUND
 
 - `expect is not defined`
 

@@ -1,5 +1,6 @@
 import styles from './login.module.css'
 import { JSX } from 'react'
+import { ButtonLoginTemplate } from '../button-login/ButtonLogin.template.tsx'
 
 const LoginTemplate = (): JSX.Element => {
 	return (
@@ -23,6 +24,8 @@ const LoginTemplate = (): JSX.Element => {
 							role={'textbox'}
 							type={'password'}></input>
 					</div>
+					<div className={styles.close}>X</div>
+					{ButtonLoginTemplate.action.render(<span>Login</span>)}
 				</form>
 			</div>
 		</div>
