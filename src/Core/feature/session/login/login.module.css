@@ -57,21 +57,3 @@
 
     position: relative;
 }
-
-.login > span {
-    color: white;
-    font-weight: bold;
-    letter-spacing: 2px;
-}
-
-.login::before {
-    content: '';
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    bottom: 5px;
-    left: 5px;
-
-    border: 2px double white;
-
-}

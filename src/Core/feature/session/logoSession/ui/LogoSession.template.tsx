@@ -1,4 +1,4 @@
-import styles from './logo.module.css'
+import styles from './logoSession.module.css'
 import logout from '@assets/svgs/person-delete-fill.svg'
 import { Link } from 'react-router-dom'
 

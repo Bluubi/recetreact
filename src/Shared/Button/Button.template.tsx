@@ -1,30 +1,37 @@
-import { ComponentProps } from 'react'
+import { ComponentProps, ReactNode } from 'react'
 import styles from './Button.module.css'
 
 export type ButtonProps = ComponentProps<'button'> & {
 	callback: () => void
+	testId: 'primary' | 'secondary' | 'submit'
 } & ButtonStats
 
-type ButtonStats = {
-	testId: 'primary' | 'secondary' | 'submit'
-	theme?: 'dark' | 'light'
-	colorText?: 'dark' | 'light'
+export type ButtonStats = {
+	theme?: 'bg-dark' | 'bg-light' | 'bg-none'
+	position?: 'relative' | 'absolute' | 'default'
+	size?: 'full-width' | 'normal-width' | 'auto'
+	mode?: 'default' | 'close'
+	place?: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right' | 'unset'
 }
 
 function Button({
-	colorText = 'light',
-	theme = 'dark',
+	theme = 'bg-dark',
+	position = 'default',
+	size = 'auto',
+	mode = 'default',
+	place = 'unset',
 	testId,
 	callback,
 	...props
 }: ButtonProps) {
 	return {
-		render: () => {
+		render: (): ReactNode => {
 			return (
 				<button
-					className={`${styles.link} ${styles[theme]} ${
-						'text-' + styles[colorText]
-					}`}
+					className={`${styles.button} ${styles[theme]} ${styles[size]} ${
+						styles[mode]
+					} ${styles[place]}
+					${position !== 'default' && styles[position]}`}
 					role={'button'}
 					data-testid={testId}
 					onClick={callback}>

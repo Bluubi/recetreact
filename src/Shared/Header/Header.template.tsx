@@ -2,7 +2,7 @@ import { ComponentProps } from 'react'
 import styles from './Header.module.css'
 
 type HeaderProps = ComponentProps<'header'> & {
-	backgroundColor: 'bg-dark' | 'bg-light'
+	backgroundColor: 'bg-primary-dark' | 'bg-primary-light'
 	padding: 'pad-8' | 'pad-16'
 }
 

@@ -118,10 +118,10 @@ default: () => LoginTemplate,
 
 ```
 
-This is because **we are not using our router system**; that is, we dont _really have our ´´routes`` associated
-with `router`
+This is because **we are not using our router system**; that is, we dont _really have our ´´routes``associated
+with`router`
 Think in this like a **specific context**. Nothing **directly related** with this context **can be known**, and our
-Router does not beloing _directly_
+Router does not beloing \_directly_
 to this space of test. So first, we **mock** the direction to associated with the element we desire to be renderer when
 user click on the actual path.
 
@@ -230,7 +230,7 @@ In this topic we'll talk about the **rules** and **design** applied to the appli
 
 ### Template Method
 
-The structure of a ``template method`` is like this:
+The structure of a `template method` is like this:
 
 ![TemplateMethod](./src/assets/docs/template-method.png)
 
@@ -242,7 +242,7 @@ But we need to face some **problems** and take a different approach:
 
 Example:
 
-````
+```
 function Button({ ...props }: ButtonProps) {
 	return {
 		render: () => {
@@ -259,12 +259,12 @@ function Button({ ...props }: ButtonProps) {
 		},
 	}
 }
-````
+```
 
 Button is the **main renderer React.NodeObject** which will accept the children from the one who will use **Button**.
 For example:
 
-`````
+```
 export const ButtonLoginTemplate = {
 	action: {
 		render: (children: JSX.Element) =>
@@ -275,7 +275,7 @@ export const ButtonLoginTemplate = {
 function sayHi() {
 	console.log('hi')
 }
-`````
+```
 
 **ButtonLoginTemplate** is an object who had a property call **action**. This **action** will "extend" the render from
 de parent.
@@ -283,12 +283,12 @@ de parent.
 > Note: obviously is nos extended because **there is no parent class neither child class**, but this will a **rule** for
 > our purposes.
 
-``render`` will use the ``Button`` parent as "basic template" and it will send to him a callback, because ``onClick``
-event from the parent will trigger the child's ``function``.
+`render` will use the `Button` parent as "basic template" and it will send to him a callback, because `onClick`
+event from the parent will trigger the child's `function`.
 
 Also the parent _holds all the basic styles_ for a button (in our application) and there is another properties
-like ``theme``,
-``padding`` or ``margin`` who can be overwritten.
+like `theme`,
+`padding` or `margin` who can be overwritten.
 
 So it exists a relationship like this:
 
@@ -300,8 +300,8 @@ So it exists a relationship like this:
 
 - b) <u>INVERSION OF CONTROL (IoC)</u>
 
-In early days of computer software, you directly control the **flow of the program**. Now this is controlled by *
-*frameworks**
+In early days of computer software, you directly control the **flow of the program**. Now this is controlled by \*
+\*frameworks\*\*
 
 > Martin Fowler said:
 >
@@ -325,7 +325,7 @@ injection** to work with Inversion of Control, but we will take another approach
 > > by either by subclassing or by plugging into your own classes. Then framework will call your code when it is
 > > required.
 
-* Note: Dependency Inversion Principle is **NOT** the same as Invertion of Control.
+- Note: Dependency Inversion Principle is **NOT** the same as Invertion of Control.
 
 ### Techniques
 
@@ -341,7 +341,6 @@ The most commonly used patterns are 1 and 2. You can understand the differences 
 link https://medium.com/@amitkma/understanding-inversion-of-control-ioc-principle-163b1dc97454#:~:text=Let%E2%80%99s%20take%20an%20example.
 
 > Docs: https://medium.com/@amitkma/understanding-inversion-of-control-ioc-principle-163b1dc97454
-
 
 We will attack **Template method design pattern** (just because im curious about it).
 
