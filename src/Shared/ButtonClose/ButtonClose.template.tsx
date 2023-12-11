@@ -1,16 +1,15 @@
 import Button from '../Button/Button.template.tsx'
+import styles from './ButtonClose.module.css'
 
 export const ButtonCloseTemplate = {
 	action: {
 		render: () => {
 			return Button({
+				testId: 'close',
+				size: 'auto-width',
 				children: <span>X</span>,
-				callback: close,
-				testId: 'secondary',
-				theme: 'bg-none',
-				mode: 'close',
-				position: 'absolute',
-				place: 'top-right',
+				action: close,
+				customStyles: [styles.button, styles.topRight],
 			}).render()
 		},
 	},

@@ -2,45 +2,42 @@ import { ComponentProps, ReactNode } from 'react'
 import styles from './Button.module.css'
 
 export type ButtonProps = ComponentProps<'button'> & {
-	callback: () => void
-	testId: 'primary' | 'secondary' | 'submit'
-} & ButtonStats
-
-export type ButtonStats = {
-	theme?: 'bg-dark' | 'bg-light' | 'bg-none'
-	position?: 'relative' | 'absolute' | 'default'
-	size?: 'full-width' | 'normal-width' | 'auto'
-	mode?: 'default' | 'close'
-	place?: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right' | 'unset'
+	action: () => void
+	testId: 'primary' | 'secondary' | 'submit' | 'close'
+	size: 'full-width' | 'auto-width' | 'normal-width'
+	customStyles?: string[]
 }
 
 function Button({
-	theme = 'bg-dark',
-	position = 'default',
-	size = 'auto',
-	mode = 'default',
-	place = 'unset',
 	testId,
-	callback,
+	action,
+	size,
+	customStyles = [],
 	...props
 }: ButtonProps) {
 	return {
 		render: (): ReactNode => {
 			return (
 				<button
-					className={`${styles.button} ${styles[theme]} ${styles[size]} ${
-						styles[mode]
-					} ${styles[place]}
-					${position !== 'default' && styles[position]}`}
+					className={
+						styles.base + ' ' + styles[size] + ' ' + concatenate(customStyles)
+					}
 					role={'button'}
 					data-testid={testId}
-					onClick={callback}>
+					onClick={action}>
 					{' '}
 					{props.children}
 				</button>
 			)
 		},
 	}
+}
+
+function concatenate(customStyles: string[]) {
+	if (customStyles.length === 0) {
+		return ''
+	}
+	return customStyles.reduce((style, nextStyle) => style + ' ' + nextStyle)
 }
 
 export default Button

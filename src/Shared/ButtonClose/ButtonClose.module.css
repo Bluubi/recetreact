@@ -1,0 +1,36 @@
+.button {
+    display: block;
+
+    padding: var(--pad-16);
+
+    position: absolute;
+
+    border: 0;
+
+    cursor: pointer;
+    background: transparent;
+
+    width: auto;
+    height: auto;
+}
+
+.topLeft {
+    top: 0;
+    left: 0;
+}
+
+.topRight {
+    top: 0;
+    right: 0;
+}
+
+.bottomLeft {
+    bottom: 0;
+    left: 0;
+}
+
+.bottomRight {
+    bottom: 0;
+    right: 0;
+}
+

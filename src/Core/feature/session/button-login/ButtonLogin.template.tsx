@@ -5,11 +5,11 @@ export const ButtonLoginTemplate = {
 	action: {
 		render: () =>
 			Button({
-				callback: sayHi,
+				action: sayHi,
 				testId: 'submit',
-				position: 'relative',
-				size: 'full-width',
 				children: <span className={styles.text}>Login</span>,
+				size: 'full-width',
+				customStyles: [styles.button, styles.text, styles.bgDark],
 			}).render(),
 	},
 }
