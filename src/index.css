@@ -95,12 +95,16 @@ body,
 	padding: var(--pad-32);
 }
 
-.bg-dark {
+.bg-highlight {
 	background-color: var(--bg-pastel-dark);
 }
 
-.bg-light {
-	background-color: var(-green);
+.bg-primary-dark {
+	background-color: var(--bg-pastel-secondary-dark);
+}
+
+.bg-primary-light {
+	background-color: var(--bg-pastel-medium-dark);
 }
 
 .bg-white {
@@ -109,8 +113,4 @@ body,
 
 .bg-black {
 	background-color: black;
-}
-
-.bg-highlight {
-	background-color: var(--bg-pastel-yellow);
 }
