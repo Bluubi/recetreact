@@ -1,4 +1,4 @@
-import { ComponentProps, ReactNode } from 'react'
+import { ComponentProps } from 'react'
 import styles from './Button.module.css'
 
 export type ButtonProps = ComponentProps<'button'> & {
@@ -15,22 +15,18 @@ function Button({
 	customStyles = [],
 	...props
 }: ButtonProps) {
-	return {
-		render: (): ReactNode => {
-			return (
-				<button
-					className={
-						styles.base + ' ' + styles[size] + ' ' + concatenate(customStyles)
-					}
-					role={'button'}
-					data-testid={testId}
-					onClick={action}>
-					{' '}
-					{props.children}
-				</button>
-			)
-		},
-	}
+	return (
+		<button
+			className={
+				styles.base + ' ' + styles[size] + ' ' + concatenate(customStyles)
+			}
+			role={'button'}
+			data-testid={testId}
+			onClick={action}>
+			{' '}
+			{props.children}
+		</button>
+	)
 }
 
 function concatenate(customStyles: string[]) {

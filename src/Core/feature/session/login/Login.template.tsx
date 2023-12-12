@@ -1,15 +1,18 @@
 import styles from './login.module.css'
-import { JSX } from 'react'
-import { ButtonLoginTemplate } from '../button-login/ButtonLogin.template.tsx'
-import { ButtonCloseTemplate } from '../../../../Shared/ButtonClose/ButtonClose.template.tsx'
+import { ButtonLogin } from '../button-login/ButtonLogin.component.tsx'
+import { ButtonClose } from '../../../../Shared/ButtonClose/ButtonClose.component.tsx'
 
-const LoginTemplate = (): JSX.Element => {
+const LoginTemplate = () => {
 	return (
 		<div className={styles.background}>
 			<div role={'generic'}>
 				<form
 					role={'form'}
 					className={styles.formulary}>
+					<ButtonClose>
+						<span>X</span>
+					</ButtonClose>
+
 					<div className={styles.formGroup}>
 						<p>Introduce your username</p>
 						<input
@@ -25,8 +28,9 @@ const LoginTemplate = (): JSX.Element => {
 							role={'textbox'}
 							type={'password'}></input>
 					</div>
-					{ButtonCloseTemplate.action.render()}
-					{ButtonLoginTemplate.action.render()}
+					<ButtonLogin>
+						<span> Login </span>
+					</ButtonLogin>
 				</form>
 			</div>
 		</div>
