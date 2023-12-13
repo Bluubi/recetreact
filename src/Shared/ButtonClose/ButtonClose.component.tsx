@@ -1,17 +1,15 @@
-import Button from '../Button/Button.template.tsx'
-import styles from './ButtonClose.module.css'
 import { ComponentProps } from 'react'
+import { NavLink } from 'react-router-dom'
+import styles from './ButtonClose.module.css'
 
-export const ButtonClose = ({ ...props }: ComponentProps<'button'>) => {
+type NavLinkProps = ComponentProps<'a'> & { customStyles?: string[] }
+export const ButtonClose = ({ ...props }: NavLinkProps) => {
 	return (
-		<Button
-			testId={'close'}
-			size={'auto-width'}
-			action={close}
-			customStyles={[styles.button, styles.topRight]}>
+		<NavLink
+			to={'/'}
+			data-testid={'close'}
+			className={`${styles.topRight} ${styles.button}`}>
 			{props.children}
-		</Button>
+		</NavLink>
 	)
 }
-
-function close() {}
