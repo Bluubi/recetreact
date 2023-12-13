@@ -6,12 +6,14 @@ export type ButtonProps = ComponentProps<'button'> & {
 	testId: 'primary' | 'secondary' | 'submit' | 'close'
 	size: 'full-width' | 'auto-width' | 'normal-width'
 	customStyles?: string[]
+	type: 'button' | 'submit'
 }
 
 function Button({
 	testId,
 	action,
 	size,
+	type = 'submit',
 	customStyles = [],
 	...props
 }: ButtonProps) {
@@ -22,8 +24,8 @@ function Button({
 			}
 			role={'button'}
 			data-testid={testId}
-			onClick={action}>
-			{' '}
+			onClick={action}
+			type={type}>
 			{props.children}
 		</button>
 	)
